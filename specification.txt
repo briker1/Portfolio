@@ -1,0 +1,20 @@
+HTML tags :
+<a>
+<h1>
+<p>
+<h5>
+<div>
+<img>
+<nav>
+<ul>
+<body>
+<span>
+CSS propities :
+display
+color
+padding
+margin
+border
+
+one-sentence description of how I used JavaScript and Bootstrap:
+i used js to make star clusters in random positions and bootstrap for the nav bar.

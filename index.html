@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>My Webpage</title>
+    </head>
+    <body>
+        <div class="stars" id="stars"></div>
+        <nav class="navbar navbar-dark bg-dark">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutme.html">About Me</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="credit.html">Credit</a></li>
+            </ul>
+        </nav>
+        <div class="row align-items-start">
+            <div class="col-3">
+                <div class="card" style="width: 20rem;" id="wiki-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Random article</h5>
+                        <p class="card-text" id="FACT"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="hero">
+                    <h1 class="hero-name">HI, I'm Rachad</h1>
+                    <p id="hero-intro">I'm a cs student and a CS50X participator.</p>
+                </div>
+            </div>
+            <div class="col-3 ">
+                <div class="card" id="nasa-card" style="width: 36rem;">
+                    <img id="nasa-img" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title" id="nasa-title">Loading......</h5>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <script>
+                fetch("https://en.wikipedia.org/api/rest_v1/page/random/summary")
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelector('#FACT').innerHTML = data.extract
+                    });
+                fetch("https://api.nasa.gov/planetary/apod?api_key=UNRhrn3VR9hzGg637MWjZzP67KC9ZCgl0JZulJwr")
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelector("#nasa-img").src = data.url;
+                        document.querySelector("#nasa-title").innerHTML = data.title;
+
+                    });
+            const stars= document.querySelector('#stars');
+            for (let i = 0;i < 200; i++){
+                let star = document.createElement('span');
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                stars.appendChild(star);
+            }
+        </script>
+    </body>
+</html>
